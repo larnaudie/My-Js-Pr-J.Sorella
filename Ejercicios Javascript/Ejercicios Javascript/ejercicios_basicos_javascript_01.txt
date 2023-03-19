@@ -1,0 +1,75 @@
+ejercicios_basicos_01.txt
+
+
+1) Escribir un programa que pregunte el nombre del usuario en la consola y después de que el usuario lo introduzca muestre por pantalla la cadena ¡Hola <nombre>!, donde <nombre> es el nombre que el usuario haya introducido.
+
+
+2) Escribir un programa que pregunte al usuario por un número de horas trabajadas y un coste por hora. Después debe mostrar por pantalla los honorarios que le corresponde.
+
+3) Escribí un programa que solicite al usuario dos números y los almacene en dos variables. En otra variable, almacenar el resultado de la suma de esos dos números y luego mostrar ese resultado en pantalla.
+A continuación, el programa debe solicitar al usuario que ingrese un tercer número, el cual se debe almacenar en una nueva variable. Por último, mostrar en pantalla el resultado de la multiplicación de este nuevo número por el resultado de la suma anterior.
+ 
+Ejemplo de ejecución:
+
+	Ingresá un número: 1
+	Ingresá otro número: 2
+	Suman: 3
+	Ingresá un nuevo número: 3
+	Multiplicación de la suma por el último número: 9
+
+4) Escribir un programa que solicite al usuario el ingreso de una temperatura en escala Fahrenheit (debe permitir decimales) y le muestre el equivalente en grados Celsius. La fórmula de conversión que se usa para este cálculo es: Celsius = (5/9) * (Fahrenheit-32)
+ 
+Ejemplo de ejecución:
+
+	Ingresar una temperatura expresada en Farenheit: 75
+	23.88888888888889
+
+5) Escribir un programa que solicite al usuario ingresar tres números para luego mostrarle el promedio de los tres.
+ 
+Ejemplo de ejecución:
+
+	Primer número: 8.5
+	Segundo número: 10
+	Tercer número: 5.5
+	El promedio de los tres es 8.0
+
+Ayuda: el promedio se puede calcular fácilmente usando arrays.
+
+
+6) Escribir un programa que solicite al usuario el ingreso de dos palabras, las cuales se guardarán en dos variables distintas. A continuación, almacenar en otra variable la concatenación de la primera palabra, más un espacio, más la segunda palabra. Mostrar este resultado en pantalla.
+ 
+Ejemplo de ejecución:
+
+	Primera palabra: derribando
+	Segunda palabra: muros
+	derribando muros
+
+
+7) Escribir un programa que solicite al usuario el ingreso de un texto y almacene ese texto en una variable. A continuación, mostrar en pantalla la primera letra del texto ingresado. Luego, solicitar al usuario que ingrese un número positivo menor a la cantidad de caracteres que tiene el texto que ingresó (por ejemplo, si escribió la palabra “HOLA”, tendrá que ser un número entre 0 y 4) y almacenar este número en una variable llamada indice.
+Mostrar en pantalla el carácter del texto ubicado en la posición dada por indice.
+
+Ejemplo de ejecución:
+
+	Ingresá un texto: En un lugar de La Mancha, de cuyo nombre no quiero acordarme…
+	El carácter en primer lugar es: E
+	Ingresá un número positivo menor a 63
+	7
+	El carácter en esa posición es: u
+
+Ayuda: googlear "string slicing with javascript"
+
+8) Una juguetería tiene mucho éxito en dos de sus productos: payasos y muñecas. Suele hacer venta por correo y la empresa de logística les cobra por peso de cada paquete así que deben calcular el peso de los payasos y muñecas que saldrán en cada paquete a demanda. Cada payaso pesa 112 g y cada muñeca 75 g. Escribir un programa que lea el número de payasos y muñecas vendidos en el último pedido y calcule el peso total del paquete que será enviado
+
+9) Definir una función max() que tome como argumento dos números y devuelva el mayor de ellos. (Es cierto que python tiene una función max() incorporada, pero hacerla nosotros mismos es un muy buen ejercicio.
+
+Ayuda: estudiar cómo funcionan los bloques if/else.
+
+10) Definir una función max_de_tres(), que tome tres números como argumentos y devuelva el mayor de ellos.
+
+11) Definir una función que calcule la longitud de una lista o una cadena dada SIN USAR la función length().
+
+12) Escribir una función que tome un carácter y devuelva True si es una vocal, de lo contrario devuelve False.
+
+13) Escribir una función sum() y una función multip() que sumen y multipliquen respectivamente todos los números de un array. Por ejemplo: sum([1,2,3,4]) debería devolver 10 y multip([1,2,3,4]) debería devolver 24.
+
+14) Imagina que acabas de abrir una nueva cuenta de ahorros que te ofrece el 4% de interés al año. Estos ahorros debido a intereses, que no se cobran hasta finales de año, se te añaden al balance final de tu cuenta de ahorros. Escribir un programa que comience leyendo la cantidad de dinero depositada en la cuenta de ahorros, introducida por el usuario. Después el programa debe calcular y mostrar por pantalla la cantidad de ahorros tras el primer, segundo y tercer años. Redondear cada cantidad a dos decimales.
