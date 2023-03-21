@@ -51,7 +51,9 @@ function Company(name) {
 const companyCola = new Company("Coca Cola");
 const companyPepsi = new Company("Pepsi");
 
+//Desde aca no puedo ver mis empleados
 console.log(companyCola, companyPepsi);
+//Desde aca si, se cumple el encapsulamiento.
 console.log(companyCola.getEmployees(), companyPepsi.getEmployees());
 
 /*Si presto atencion, no puedo acceder a los empleados, por lo que cumple con la encapsulacion*/
