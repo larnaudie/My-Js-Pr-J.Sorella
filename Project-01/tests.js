@@ -63,10 +63,10 @@ async function project_1() {
     .findElement(By.id("loginpassword"))
     .sendKeys("test");
   //And I click over the Log In button in the Log In popup
+  /*
+  const log1 = await driver.findElement(By.linkText("Log in")).click();
 
   /*
-  const log1 = await driver.findElement(By.partialLinkText("Log in")).click();
-
   //And I complete the password field with the expected valid password
   if ((user1 && pass1 && log1) === true) {
     console.log("Test #7 success, User can access");
