@@ -37,7 +37,7 @@ async function project_1() {
   await driver.findElement(By.id("signin2"));
 
   if (await driver.findElement(By.id("signin2"))) {
-    console.log("Test #2: success, I should see a Sign Up");
+    console.log("Test #2 success, I should see a Sign Up");
   } else {
     console.log("Test #2 failed, I can not see a Sign Up");
     return;
@@ -49,7 +49,6 @@ async function project_1() {
 
   //Then I should see a Log In pop up
   if (await driver.findElement(By.className("modal-content"))) {
-    //Me da failed
     console.log("Test #3 success, I click over the Log In button");
   } else {
     console.log("Test #3 failed, I can not do click over the Log In button");
@@ -70,40 +69,43 @@ async function project_1() {
     .findElement(By.xpath(`//*[@id="logInModal"]/div/div/div[3]/button[2]`))
     .click();
 
-  /*
   //And I complete the password field with the expected valid password
-  if ((user1 && pass1 && log1) === true) {
-    console.log("Test #7 success, User can access");
+  if (await driver.findElement(By.xpath(`//*[@id="nameofuser"]`))) {
+    console.log("Test #4 success, User can access");
   } else {
-    console.log("Test #7 failed, User can not access");
+    console.log("Test #4 failed, User can not access");
   }
-  //Then I should not longer see any popup on the screen
-  await driver.findElement(By.id("login2"));
 
-  if (await driver.findElement(By.id("login2"))) {
-    console.log("Test #8 success, I can not see a Log In button");
+  //Then I should not longer see any popup on the screen
+  await driver.findElement(By.xpath(`//*[@id="logInModal"]/div/div`));
+
+  if (await driver.findElement(By.xpath(`//*[@id="logInModal"]/div/div`))) {
+    console.log("Test #5 success, I can not see a pop up");
   } else {
-    console.log("Test #8 failed, I should see a Log In button");
+    console.log("Test #5 failed, I can see a pop up");
     return;
   }
-  //And I should not longer see the Sign Up button in the navigation bar
-  await driver.findElement(By.id("signin2"));
 
-  if (await driver.findElement(By.id("signin2"))) {
-    console.log("Test #9: success, I can not see a Sign Up");
+  //And I should not longer see the Sign Up button in the navigation bar
+  await driver.findElement(By.xpath(`//*[@id="signin2"]`));
+
+  if (await driver.findElement(By.xpath(`//*[@id="signin2"]`))) {
+    console.log("Test #6 success, I can not see a Sign Up");
   } else {
-    console.log("Test #9 failed, I should see a Sign Up");
+    console.log("Test #6 failed, I should see a Sign Up");
     return;
   }
 
   //And I should see a "Welcome <username>" button in the navigation bar
-  await driver.findElement(By.id("nameofuser"));
-  if (await driver.findElement(By.id("nameofuser"))) {
+  await driver.findElement(By.xpath(`//*[@id="nameofuser"]`));
+  if (
+    (await driver.findElement(By.xpath(`//*[@id="nameofuser"]`))) ===
+    `Welcome ${await driver.findElement(By.id("loginusername"))}`
+  ) {
     console.log("Test #10 success, I am in");
   } else {
     console.log("Test #10 failed, I am not in");
     return;
   }
-  */
 }
 project_1();
