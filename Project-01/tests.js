@@ -21,6 +21,8 @@ async function project_1() {
   //When I access to the Demo Blaze home page
   await driver.get("https://www.demoblaze.com/");
 
+  //maximizar pestaña
+  await driver.manage().window().maximize();
   //Then I should see a Log In button in the navigation bar
   await driver.findElement(By.id("login2"));
 
@@ -63,8 +65,10 @@ async function project_1() {
     .findElement(By.id("loginpassword"))
     .sendKeys("test");
   //And I click over the Log In button in the Log In popup
-  /*
-  const log1 = await driver.findElement(By.linkText("Log in")).click();
+
+  const log1 = await driver
+    .findElement(By.xpath(`//*[@id="logInModal"]/div/div/div[3]/button[2]`))
+    .click();
 
   /*
   //And I complete the password field with the expected valid password
