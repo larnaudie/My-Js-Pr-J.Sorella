@@ -45,7 +45,7 @@ async function project_1_part1() {
 
   //When I click over the Log In button in the navigation bar
 
-  await driver.findElement(By.id("login2")).click();
+  const clickOnLogIn2 = await driver.findElement(By.id("login2")).click();
 
   //Then I should see a Log In pop up
   if (await driver.findElement(By.className("modal-content"))) {
@@ -65,7 +65,7 @@ async function project_1_part1() {
     .sendKeys("test");
   //And I click over the Log In button in the Log In popup
 
-  const clickLoginIn = await driver
+  const clickOnModalLogIn = await driver
     .findElement(By.xpath(`//*[@id="logInModal"]/div/div/div[3]/button[2]`))
     .click();
 
