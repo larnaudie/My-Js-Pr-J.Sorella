@@ -26,7 +26,7 @@ async function project_1_part1() {
   //Then I should see a Log In button in the navigation bar
   const findLogIn2 = await driver.findElement(By.id("login2"));
 
-  if (logIn2) {
+  if (findLogIn2) {
     console.log("Test #1 success, I should see a Log In button");
   } else {
     console.log("Test #1 failed, I can not see a Log In button");
@@ -36,7 +36,7 @@ async function project_1_part1() {
   // And I should see a Sign Up button in the navigation bar
   const findSingIn2 = await driver.findElement(By.id("signin2"));
 
-  if (singIn2) {
+  if (findSingIn2) {
     console.log("Test #2 success, I should see a Sign Up");
   } else {
     console.log("Test #2 failed, I can not see a Sign Up");
@@ -99,9 +99,9 @@ async function project_1_part1() {
   }
 
   //And I should see a "Welcome <username>" button in the navigation bar
-  await driver.findElement(By.xpath(`//*[@id="nameofuser"]`));
+  await driver.findElement(By.css(`#nameofuser`));
 
-  if (await driver.findElement(By.xpath(`//*[@id="nameofuser"]`))) {
+  if (await driver.findElement(By.css(`#nameofuser`))) {
     console.log("Test #7 success, I am in");
   } else {
     console.log("Test #7 failed, I am not in");
