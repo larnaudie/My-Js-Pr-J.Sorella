@@ -22,9 +22,9 @@ async function project_1_part1() {
   await driver.get("https://www.demoblaze.com/");
 
   //maximizar pestaña
-  await driver.manage().window().maximize();
+  const maximize = await driver.manage().window().maximize();
   //Then I should see a Log In button in the navigation bar
-  const logIn2 = await driver.findElement(By.id("login2"));
+  const findLogIn2 = await driver.findElement(By.id("login2"));
 
   if (logIn2) {
     console.log("Test #1 success, I should see a Log In button");
@@ -34,7 +34,7 @@ async function project_1_part1() {
   }
 
   // And I should see a Sign Up button in the navigation bar
-  const singIn2 = await driver.findElement(By.id("signin2"));
+  const findSingIn2 = await driver.findElement(By.id("signin2"));
 
   if (singIn2) {
     console.log("Test #2 success, I should see a Sign Up");
@@ -56,11 +56,11 @@ async function project_1_part1() {
   }
 
   // When I complete the user name field with an existing user name
-  const user1 = await driver
+  const testUser = await driver
     .findElement(By.id("loginusername"))
     .sendKeys("test");
   //And I complete the password field with the expected valid password
-  const pass1 = await driver
+  const testPass = await driver
     .findElement(By.id("loginpassword"))
     .sendKeys("test");
   //And I click over the Log In button in the Log In popup
