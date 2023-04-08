@@ -1,17 +1,26 @@
+const url = require('./urls')
+const ENV = process.env.ENV
+
+if (!ENV || !['qa', 'dev', 'staging'].includes(ENV)) {
+    console.log(' Please use the following format when running the test script: ENV=qa|dev|staging')
+    process.exit()
+}
+
 exports.config = {
     //
     // ====================
     // Runner Configuration
     // ====================
-    // WebdriverIO supports running e2e tests as well as unit and component tests.
-    runner: 'browser',
-    
+    //
+    // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
+    // on a remote machine).
+    runner: 'local',
     //
     // ==================
     // Specify Test Files
     // ==================
     // Define which test specs should run. The pattern is relative to the directory
-    // of the configuration file being run.
+    // from which `wdio` was called.
     //
     // The specs are defined as an array of spec files (optionally using wildcards
     // that will be expanded). The test for each spec file will be run in a separate
@@ -23,8 +32,17 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './src/**/*.test.js'
+        './test/**/*.js'
     ],
+
+    suites: {
+        actions: [
+            './test/actions/*.js'
+        ],
+        login: [
+            './test/Chapter6.5 Assignment Solution/*.js'
+        ]
+    },
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -49,7 +67,7 @@ exports.config = {
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
-    // https://saucelabs.com/platform/platform-configurator
+    // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [{
     
@@ -96,7 +114,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: '',
+    baseUrl: url[process.env.ENV],
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -112,7 +130,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['selenium-standalone'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -134,7 +152,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: ['spec','dot'],
 
 
     
@@ -166,19 +184,10 @@ exports.config = {
      * @param  {String} cid      capability id (e.g 0-0)
      * @param  {[type]} caps     object containing capabilities for session that will be spawn in the worker
      * @param  {[type]} specs    specs to be run in the worker process
-     * @param  {[type]} args     object that will be merged with the main configuration once worker is initialized
+     * @param  {[type]} args     object that will be merged with the main configuration once worker is initialised
      * @param  {[type]} execArgv list of string arguments passed to the worker process
      */
     // onWorkerStart: function (cid, caps, specs, args, execArgv) {
-    // },
-    /**
-     * Gets executed just after a worker process has exited.
-     * @param  {String} cid      capability id (e.g 0-0)
-     * @param  {Number} exitCode 0 - success, 1 - fail
-     * @param  {[type]} specs    specs to be run in the worker process
-     * @param  {Number} retries  number of retries used
-     */
-    // onWorkerEnd: function (cid, exitCode, specs, retries) {
     // },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
@@ -186,9 +195,8 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
-     * @param {String} cid worker id (e.g. 0-0)
      */
-    // beforeSession: function (config, capabilities, specs, cid) {
+    // beforeSession: function (config, capabilities, specs) {
     // },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -215,8 +223,19 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+     beforeTest: function () {
+        require('expect-webdriverio');
+        global.wdioExpect = global.expect;
+
+        const chai = require('chai')
+        const chaiWebdriver = require('chai-webdriverio').default
+
+        chai.use(chaiWebdriver(browser))
+
+        global.assert = chai.assert
+        global.expect = chai.expect
+        chai.Should()
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
@@ -230,14 +249,7 @@ exports.config = {
     // afterHook: function (test, context, { error, result, duration, passed, retries }) {
     // },
     /**
-     * Function to be executed after a test (in Mocha/Jasmine only)
-     * @param {Object}  test             test object
-     * @param {Object}  context          scope object the test was executed with
-     * @param {Error}   result.error     error object in case the test fails, otherwise `undefined`
-     * @param {Any}     result.result    return object of test function
-     * @param {Number}  result.duration  duration of test
-     * @param {Boolean} result.passed    true if test has passed, otherwise false
-     * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
+     * Function to be executed after a test (in Mocha/Jasmine).
      */
     // afterTest: function(test, context, { error, result, duration, passed, retries }) {
     // },
@@ -290,6 +302,6 @@ exports.config = {
     * @param {String} oldSessionId session ID of the old session
     * @param {String} newSessionId session ID of the new session
     */
-    // onReload: function(oldSessionId, newSessionId) {
-    // }
+    //onReload: function(oldSessionId, newSessionId) {
+    //}
 }
