@@ -99,6 +99,18 @@ async function project_1_part1() {
   }
 
   //And I should see a "Welcome <username>" button in the navigation bar
+  const userIn = await driver.findElement(
+    By.xpath("//div[text()='Welcome test']")
+  );
+
+  if (userIn) {
+    console.log("Test #7 success, I am in");
+  } else {
+    console.log("Test #7 failed, I am not in");
+    return;
+  }
+
+  /*
   await driver.findElement(By.css(`#nameofuser`));
 
   if (await driver.findElement(By.css(`#nameofuser`))) {
@@ -106,7 +118,7 @@ async function project_1_part1() {
   } else {
     console.log("Test #7 failed, I am not in");
     return;
-  }
+  }*/
 }
 project_1_part1();
 
