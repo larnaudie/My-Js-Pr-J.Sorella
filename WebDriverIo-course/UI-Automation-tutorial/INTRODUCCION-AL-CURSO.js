@@ -46,8 +46,15 @@ Visit the project on GitHub to report bugs 🐛 or raise feature requests 💡:
 
 To run your tests, execute:
 $ cd C:\Users\pablo\OneDrive\Desktop\Estudios\Programacion\Cursos Gloabnt\My-Javascript-practices\WebDriverIo-course\UI-Automation-tutorial
-$ npm run wdio
+$ npm run wdio    ---> ella usa npx wdio run wdio.conf.js
 
 PS C:\Users\pablo\OneDrive\Desktop\Estudios\Programacion\Cursos Gloabnt\My-Javascript-practices\WebDriverIo-course\UI-Automation-tutorial>
+
+IMPORTANTE, en la version de webdriverio 7 viene instalado el uso de la asincronia
+si estas usando una version del node.js 16 o superior (tenemos 18 de momento) chrome no
+soporta el modo sincronico, si estamos comenzando un nuevo poyecto se recomineda que usemos
+el modo async, entonces @wdio/sync no se puede usar para chromium.
+
+El curso va a ser con sync, entonces tendremos que transcribir todo a async/await.
 
 */
