@@ -1,0 +1,23 @@
+{
+  "name": "project-01-webdriverio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "wdio": "wdio run ./wdio.conf.js"
+  },
+  "author": "Pablo Larnaudie",
+  "license": "ISC",
+  "dependencies": {
+    "webdriverio": "^8.7.0"
+  },
+  "devDependencies": {
+    "@wdio/browser-runner": "^8.7.0",
+    "@wdio/cli": "^8.7.0",
+    "@wdio/mocha-framework": "^8.7.0",
+    "@wdio/spec-reporter": "^8.7.0",
+    "chromedriver": "^112.0.0",
+    "wdio-chromedriver-service": "^8.1.1"
+  }
+}
