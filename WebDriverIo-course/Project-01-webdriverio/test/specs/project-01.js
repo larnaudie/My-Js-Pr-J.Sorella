@@ -1,0 +1,120 @@
+describe(`Project-01`, async () => {
+  it("When I access to the Demo Blaze home page", async () => {
+    await browser.url("https://www.demoblaze.com/");
+    expect(await browser.getTitle()).toEqual("STORE");
+  });
+  it("Maximize window", async () => {
+    browser.maximizeWindow();
+  });
+  it("Then I should see a Log In button in the navigation bar", async () => {
+    await browser.findElement("#login2", "Log In");
+  });
+});
+
+/*"HAY QUE PASARLO A WDIO, ESTA EN SELENIUM!!!";
+"PRECISAMOS 2 JS, UNO DONDE SE SELECCIONE LOS ELEMENTOS 
+Y OTRO DONDE SE HAGAN LOS CASOS DE PRUEAS, test-project-01 se haran
+las pruebas y en main-project-01 se haran los selectores
+
+const { By, Key, Builder } = require("selenium-webdriver");
+require("chromedriver");
+
+async function project_1_part1() {
+  let driver = await new Builder().forBrowser("chrome").build();
+
+  //When I access to the Demo Blaze home page
+  await driver.get("https://www.demoblaze.com/");
+
+  //maximizar pestaña
+  const maximize = await driver.manage().window().maximize();
+  //Then I should see a Log In button in the navigation bar
+  const findLogIn2 = await driver.findElement(By.id("login2"));
+
+  if (findLogIn2) {
+    console.log("Test #1 success, I should see a Log In button");
+  } else {
+    console.log("Test #1 failed, I can not see a Log In button");
+    return;
+  }
+
+  // And I should see a Sign Up button in the navigation bar
+  const findSingIn2 = await driver.findElement(By.id("signin2"));
+
+  if (findSingIn2) {
+    console.log("Test #2 success, I should see a Sign Up");
+  } else {
+    console.log("Test #2 failed, I can not see a Sign Up");
+    return;
+  }
+
+  //When I click over the Log In button in the navigation bar
+
+  const clickOnLogIn2 = await driver.findElement(By.id("login2")).click();
+
+  //Then I should see a Log In pop up
+  if (await driver.findElement(By.className("modal-content"))) {
+    console.log("Test #3 success, I click over the Log In button");
+  } else {
+    console.log("Test #3 failed, I can not do click over the Log In button");
+    return;
+  }
+
+  // When I complete the user name field with an existing user name
+  const testUser = await driver
+    .findElement(By.id("loginusername"))
+    .sendKeys("test");
+  //And I complete the password field with the expected valid password
+  const testPass = await driver
+    .findElement(By.id("loginpassword"))
+    .sendKeys("test");
+  //And I click over the Log In button in the Log In popup
+
+  const clickOnModalLogIn = await driver
+    .findElement(By.xpath(`//*[@id="logInModal"]/div/div/div[3]/button[2]`))
+    .click();
+
+  //And I complete the password field with the expected valid password
+  if (await driver.findElement(By.xpath(`//*[@id="nameofuser"]`))) {
+    console.log("Test #4 success, User can access");
+  } else {
+    console.log("Test #4 failed, User can not access");
+  }
+
+  //Then I should not longer see any popup on the screen
+  const findModal = await driver.findElement(
+    By.xpath(`//*[@id="logInModal"]/div/div`)
+  );
+
+  if (findModal) {
+    console.log("Test #5 success, I can not see a pop up");
+  } else {
+    console.log("Test #5 failed, I can see a pop up");
+    return;
+  }
+
+  //And I should not longer see the Sign Up button in the navigation bar
+  const findSignIn = await driver.findElement(By.xpath(`//*[@id="signin2"]`));
+
+  if (findSignIn) {
+    console.log("Test #6 success, I can not see a Sign Up");
+  } else {
+    console.log("Test #6 failed, I should see a Sign Up");
+    return;
+  }
+
+  //And I should see a "Welcome <username>" button in the navigation bar
+
+  await driver.findElement(By.css(`#nameofuser`));
+
+  if (await driver.findElement(By.css(`#nameofuser`))) {
+    console.log("Test #7 success, I am in");
+  } else {
+    console.log("Test #7 failed, I am not in");
+    return;
+  }
+}
+project_1_part1();
+
+//console.log("Test #7 success, I am in");
+//console.log("Test #7 failed, I am not in");
+*/
