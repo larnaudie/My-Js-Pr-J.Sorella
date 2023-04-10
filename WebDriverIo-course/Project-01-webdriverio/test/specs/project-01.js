@@ -1,4 +1,4 @@
-describe(`Project-01`, async () => {
+describe(`Project-01-part1`, async () => {
   it("When I access to the Demo Blaze home page", async () => {
     await browser.url("https://www.demoblaze.com/");
     expect(await browser.getTitle()).toEqual("STORE");
@@ -7,114 +7,83 @@ describe(`Project-01`, async () => {
     browser.maximizeWindow();
   });
   it("Then I should see a Log In button in the navigation bar", async () => {
-    await browser.findElement("#login2", "Log In");
+    const login = $("#login2");
+  });
+  it("And I should see a Sign Up button in the navigation bar", async () => {
+    const sigin = $("#signin2");
+  });
+  it("When I click over the Log In button in the navigation bar", async () => {
+    const logInClick = (await $(`//*[@id="login2"]`)).click();
+  });
+  it("Then I should see a Log In pop up", async () => {
+    const modalLogIn = $(`#logInModal > div > div`);
+  });
+  it("When I complete the user name field with an existing user name", async () => {
+    const user = $(`//*[@id="loginusername"]`);
+    await (await user).setValue(`test`);
+  });
+  it("And I complete the password field with the expected valid password", async () => {
+    const pass = $(`//*[@id="loginpassword"]`);
+    await (await pass).setValue(`test`);
+  });
+  it("And I click over the Log In button in the Log In popup", async () => {
+    const submitBtn = $(`//*[@id="logInModal"]/div/div/div[3]/button[2]`);
+    await (await submitBtn).click();
+  });
+  it("Then I should not longer see any popup on the screen", async () => {
+    if ($(`#logInModal > div > div`).isExisting()) {
+      console.log("test failed");
+    } else {
+      ("test succes");
+    }
+  });
+  it("And I should not longer see the Sign Up button in the navigation bar", async () => {
+    if ($("#signin2").isExisting()) {
+      console.log("test failed");
+    } else {
+      console.log("test succes");
+    }
+  });
+  it(`And I should see a "Welcome <username>" button in the navigation bar`, async () => {
+    const welcomeUser = $(`//*[@id="nameofuser"]`);
+    (await welcomeUser) == "Welcome test";
+  });
+});
+describe(`Project-01-part2`, async () => {
+  it("When I access to the Demo Blaze home page", async () => {
+    await browser.url("https://www.demoblaze.com/");
+    expect(await browser.getTitle()).toEqual("STORE");
+  });
+  it("Maximize window", async () => {
+    browser.maximizeWindow();
+  });
+  it("Then I should see a Log In button in the navigation bar", async () => {
+    const login = $("#login2");
+  });
+  it("And I should see a Sign Up button in the navigation bar", async () => {
+    const sigin = $("#signin2");
+  });
+  it("When I click over the Log In button in the navigation bar", async () => {
+    const logInClick = (await $(`//*[@id="login2"]`)).click();
+  });
+  it("Then I should see a Log In pop up", async () => {
+    const modalLogIn = $(`#logInModal > div > div`);
+  });
+  it("When I complete the user name field with an existing user name", async () => {
+    const user = $(`//*[@id="loginusername"]`);
+    await (await user).setValue(`test`);
+  });
+  it("And I click over the Log In button in the Log In popup", async () => {
+    const submitBtn = $(`//*[@id="logInModal"]/div/div/div[3]/button[2]`);
+    await (await submitBtn).click();
+  });
+  it("And I click over the Log In button in the Log In popup", async () => {
+    const alertText = await browser.getAlertText();
+    (await alertText) == "Please fill out Username and Password";
   });
 });
 
-/*"HAY QUE PASARLO A WDIO, ESTA EN SELENIUM!!!";
-"PRECISAMOS 2 JS, UNO DONDE SE SELECCIONE LOS ELEMENTOS 
-Y OTRO DONDE SE HAGAN LOS CASOS DE PRUEAS, test-project-01 se haran
-las pruebas y en main-project-01 se haran los selectores
-
-const { By, Key, Builder } = require("selenium-webdriver");
-require("chromedriver");
-
-async function project_1_part1() {
-  let driver = await new Builder().forBrowser("chrome").build();
-
-  //When I access to the Demo Blaze home page
-  await driver.get("https://www.demoblaze.com/");
-
-  //maximizar pestaña
-  const maximize = await driver.manage().window().maximize();
-  //Then I should see a Log In button in the navigation bar
-  const findLogIn2 = await driver.findElement(By.id("login2"));
-
-  if (findLogIn2) {
-    console.log("Test #1 success, I should see a Log In button");
-  } else {
-    console.log("Test #1 failed, I can not see a Log In button");
-    return;
-  }
-
-  // And I should see a Sign Up button in the navigation bar
-  const findSingIn2 = await driver.findElement(By.id("signin2"));
-
-  if (findSingIn2) {
-    console.log("Test #2 success, I should see a Sign Up");
-  } else {
-    console.log("Test #2 failed, I can not see a Sign Up");
-    return;
-  }
-
-  //When I click over the Log In button in the navigation bar
-
-  const clickOnLogIn2 = await driver.findElement(By.id("login2")).click();
-
-  //Then I should see a Log In pop up
-  if (await driver.findElement(By.className("modal-content"))) {
-    console.log("Test #3 success, I click over the Log In button");
-  } else {
-    console.log("Test #3 failed, I can not do click over the Log In button");
-    return;
-  }
-
-  // When I complete the user name field with an existing user name
-  const testUser = await driver
-    .findElement(By.id("loginusername"))
-    .sendKeys("test");
-  //And I complete the password field with the expected valid password
-  const testPass = await driver
-    .findElement(By.id("loginpassword"))
-    .sendKeys("test");
-  //And I click over the Log In button in the Log In popup
-
-  const clickOnModalLogIn = await driver
-    .findElement(By.xpath(`//*[@id="logInModal"]/div/div/div[3]/button[2]`))
-    .click();
-
-  //And I complete the password field with the expected valid password
-  if (await driver.findElement(By.xpath(`//*[@id="nameofuser"]`))) {
-    console.log("Test #4 success, User can access");
-  } else {
-    console.log("Test #4 failed, User can not access");
-  }
-
-  //Then I should not longer see any popup on the screen
-  const findModal = await driver.findElement(
-    By.xpath(`//*[@id="logInModal"]/div/div`)
-  );
-
-  if (findModal) {
-    console.log("Test #5 success, I can not see a pop up");
-  } else {
-    console.log("Test #5 failed, I can see a pop up");
-    return;
-  }
-
-  //And I should not longer see the Sign Up button in the navigation bar
-  const findSignIn = await driver.findElement(By.xpath(`//*[@id="signin2"]`));
-
-  if (findSignIn) {
-    console.log("Test #6 success, I can not see a Sign Up");
-  } else {
-    console.log("Test #6 failed, I should see a Sign Up");
-    return;
-  }
-
-  //And I should see a "Welcome <username>" button in the navigation bar
-
-  await driver.findElement(By.css(`#nameofuser`));
-
-  if (await driver.findElement(By.css(`#nameofuser`))) {
-    console.log("Test #7 success, I am in");
-  } else {
-    console.log("Test #7 failed, I am not in");
-    return;
-  }
-}
-project_1_part1();
-
-//console.log("Test #7 success, I am in");
-//console.log("Test #7 failed, I am not in");
+/*
+Then I should see a navigator popup with the following message: "Please fill out
+Username and Password."
 */
