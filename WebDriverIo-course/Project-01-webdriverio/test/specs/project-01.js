@@ -48,7 +48,11 @@ describe(`Project-01-part1`, async () => {
     const welcomeUser = $(`//*[@id="nameofuser"]`);
     (await welcomeUser) == "Welcome test";
   });
+  it(`Then I log out`, async () => {
+    const logOut = (await $(`//*[@id="logout2"]`)).click();
+  });
 });
+
 describe(`Project-01-part2`, async () => {
   it("When I access to the Demo Blaze home page", async () => {
     await browser.url("https://www.demoblaze.com/");
@@ -79,7 +83,7 @@ describe(`Project-01-part2`, async () => {
   });
   it("And I click over the Log In button in the Log In popup", async () => {
     const alertText = await browser.getAlertText();
-    (await alertText) == "Please fill out Username and Password";
+    (await alertText) === "Please fill out Username and Passwword";
   });
 });
 
