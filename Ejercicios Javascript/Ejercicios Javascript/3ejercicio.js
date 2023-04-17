@@ -1,4 +1,4 @@
-"strict";
+"use strict";
 
 /*3) Escribí un programa que solicite al usuario dos números
  y los almacene en dos variables. En otra variable, almacenar 
@@ -17,10 +17,15 @@ Ejemplo de ejecución:
 	Ingresá un nuevo número: 3
 	Multiplicación de la suma por el último número: 9
     */
-const leyenda1 = "ingrese primer valor";
+   
+const prompt = require("prompt-sync")();
+
+const leyenda1 = "ingrese primer valor: ";
 const num1 = Number(prompt(leyenda1));
-const num2 = Number(prompt("ingrese segundo valor"));
-const num3 = Number(prompt("ingrese tercer valor"));
+const num2 = Number(prompt("ingrese segundo valor: "));
+console.log(`Suman: ${num1 + num2}`);
+
+const num3 = Number(prompt("ingrese tercer valor: "));
 
 const multiplicando = function (num1, num2, num3) {
   return `El valor final de todos los valores es ${(num1 + num2) * num3}`;

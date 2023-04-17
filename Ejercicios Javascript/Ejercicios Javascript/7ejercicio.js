@@ -1,4 +1,4 @@
-"strict";
+"use strict";
 /*7) Escribir un programa que solicite al usuario el ingreso
  de un texto y almacene ese texto en una variable. 
  A continuación, mostrar en pantalla la primera letra del texto ingresado.
@@ -21,6 +21,11 @@ Ejemplo de ejecución:
 Ayuda: googlear "string slicing with javascript"
 */
 
-const putText = prompt("put your text below");
+const prompt = require("prompt-sync")();
+
+const putText = prompt("put your text below: ");
 const firstLetter = putText.charAt(0);
 console.log(firstLetter);
+
+
+// Javier: Este ejercicio está incompleto.

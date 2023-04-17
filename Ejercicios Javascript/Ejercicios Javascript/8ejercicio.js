@@ -7,7 +7,10 @@ Escribir un programa que lea el número de payasos y muñecas vendidos
  en el último pedido y calcule el peso total del paquete que será enviado
 */
 
-//probando si trnasforma a numero el number
+const prompt = require("prompt-sync")();
+
+//probando si trnasforma a numero el number >>> Javier Nota: borrar este tipo de anotaciones.
+/*
 const numerito = Number(prompt("esto sera un numerito de valor 1"));
 
 if (numerito === 1) {
@@ -16,15 +19,16 @@ if (numerito === 1) {
   console.log("es un string, no un numero");
 }
 console.log(numerito);
+*/
 
 //ingresando peso
 const heighClowns = 112;
 const heighBarbies = 75;
 
 //ingresando cantidad
-const countClowns = Number(prompt("how many clowns had been sold?"));
-const countBarbies = Number(prompt("how many barbies had been sold?"));
-console.log(countBarbies, countClowns);
+const countClowns = Number(prompt("how many clowns had been sold?: "));
+const countBarbies = Number(prompt("how many barbies had been sold?: "));
+// console.log(countBarbies, countClowns);
 
 //calculando peso por cantidad
 
@@ -34,7 +38,7 @@ const finalClowns = function (heighClowns, countClowns) {
   return clownsFianlHeigh;
 };
 //verificando
-console.log(finalClowns(heighClowns, countClowns));
+// console.log(finalClowns(heighClowns, countClowns));
 
 //calulando peso y catidad en muñecas
 const finalBarbies = function (heighClowns, countClowns) {
@@ -42,9 +46,13 @@ const finalBarbies = function (heighClowns, countClowns) {
   return barbiesFinalHeigh;
 };
 //verificando
-console.log(finalBarbies(heighClowns, countClowns));
+// console.log(finalBarbies(heighClowns, countClowns));
 
 //sumando todo el envio en total
 console.log(
   finalClowns(heighClowns, countClowns) + finalBarbies(heighClowns, countClowns)
 );
+
+//Javier notas:
+// - Evitar loguear cosas que no sean las pedidas en el ejercicio.
+// - Agregar explicaciones de la información que se le muestra al usuario (ej: "El peso total del paquete es... gramos.").

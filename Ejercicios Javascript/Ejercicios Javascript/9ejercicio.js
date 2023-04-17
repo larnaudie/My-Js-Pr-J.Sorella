@@ -6,8 +6,10 @@ pero hacerla nosotros mismos es un muy buen ejercicio.
 Ayuda: estudiar cómo funcionan los bloques if/else.
 */
 
-let num1 = Number(prompt("type 1 number"));
-let num2 = Number(prompt("type other number"));
+const prompt = require("prompt-sync")();
+
+let num1 = Number(prompt("type 1 number: "));
+let num2 = Number(prompt("type other number: "));
 
 let max = function (num1, num2) {
   if (num1 > num2) {
@@ -19,6 +21,6 @@ let max = function (num1, num2) {
   }
 };
 
-console.log(max(num1, num2));
+console.log(max(num1, num2)); //Javier notas: el console.log no cumple objetivo alguno acá.
 
 //que tal si quiero que me vuelva a preguntar si quiero colocar otros valores? loop

@@ -14,6 +14,8 @@ function longuitud(lista_o_cadena){
 } - preciso refuerzo con mas ejercicios.
 
 */
+const prompt = require("prompt-sync")();
+
 const objetoAProbar = [1, 2, 3];
 const stringAProbar = "Hola pepe";
 
@@ -22,7 +24,7 @@ const calcLarge = function (value) {
   for (let i = 0; i < value.length; i++) {
     sum++;
   }
-  console.log(sum);
+  console.log(sum); //Javier: sería mejor retornar "sum" y loguear en main.
 };
 
 calcLarge(objetoAProbar);
