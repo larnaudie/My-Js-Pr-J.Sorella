@@ -21,7 +21,21 @@ describe("Functional Testing on  Application", () => {
   });
 
   xit("Web Tables Sort validation Smoke", async () => {
-    /* await browser.url("/seleniumPractise/#/offers");
+    /*
+    await browser.url(
+      `httpsa://rahulshettyAcademy.com/seleniumPracise/#/offers`);
+    await $(`tr th:nth-child(1)`).click();
+    const veggiesLocators = await $$(`tr td:nth-child(1)`);
+    const veggiesName = await veggiesLocators.map(
+      async (veggie) => await veggie.getText()
+    );
+    console.log(veggiesName);
+    sortVeggies = veggiesName.sort();
+    expectchai(veggiesName).to.equal(sortVeggies); //compara 2 arrays, no precisa await
+  });*/
+
+    //Luego de que entendamos el trabajo del debugging del visual studio, nuestro codigo deberia quedar asi:
+    await browser.url("/seleniumPractise/#/offers");
     await $("tr th:nth-child(1)").click();
     //retrive list of veggie names into array A
     //sort the array A ->Array B
@@ -36,20 +50,7 @@ describe("Functional Testing on  Application", () => {
     sortedVeggies = veggies.sort();
     console.log(sortedVeggies);
     expectchai(OriginalveggiesNames).to.eql(sortedVeggies);
-  });*/ //Asi es como estaba en el archivo base, y a continuacion es como estaba en el curso actualizado:
-
-    await browser.url(
-      `httpsa://rahulshettyAcademy.com/seleniumPracise/#/offers`
-    );
-    await $(`tr th:nth-child(1)`).click();
-    const veggiesLocators = await $$(`tr td:nth-child(1)`);
-    const veggiesName = await veggiesLocators.map(
-      async (veggie) => await veggie.getText()
-    );
-    console.log(veggiesName);
-    sortVeggies = veggiesName.sort();
-    expectchai(veggiesName).to.equal(sortVeggies); //compara 2 arrays, no precisa await
-  });
+  }); //Asi es como estaba en el archivo base
 
   it("Web Tables Filter validation", async () => {
     await browser.url("/seleniumPractise/#/offers");
