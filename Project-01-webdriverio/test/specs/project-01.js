@@ -1,3 +1,7 @@
+const loginPage = require("./loginpage");
+
+const expectchai = require("chai").expect;
+
 describe(`Project-01-part1`, async () => {
   it("When I access to the Demo Blaze home page", async () => {
     await browser.url("https://www.demoblaze.com/");
@@ -7,10 +11,10 @@ describe(`Project-01-part1`, async () => {
     browser.maximizeWindow();
   });
   it("Then I should see a Log In button in the navigation bar", async () => {
-    const login = $("#login2");
+    const login = findLogin;
   });
   it("And I should see a Sign Up button in the navigation bar", async () => {
-    const sigin = $("#signin2");
+    const sigin = findSignIn;
   });
   it("When I click over the Log In button in the navigation bar", async () => {
     const logInClick = (await $(`//*[@id="login2"]`)).click();
