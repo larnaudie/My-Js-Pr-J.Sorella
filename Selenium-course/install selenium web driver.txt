@@ -1,2 +1,0 @@
-en la terminal debemos escribir:
-npm install --save selenium-webdriver chrome driver gekodriver
