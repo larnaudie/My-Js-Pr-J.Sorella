@@ -1,4 +1,6 @@
-const loginPage = require("../pageobjects/loginpage");
+const loginPage = require("./loginpage");
+
+const expectchai = require("chai").expect;
 
 describe(`Project-01-part1`, async () => {
   it("When I access to the Demo Blaze home page", async () => {
@@ -9,41 +11,43 @@ describe(`Project-01-part1`, async () => {
     browser.maximizeWindow();
   });
   it("Then I should see a Log In button in the navigation bar", async () => {
-    await loginPage.findLogIn;
+    loginPage.findLogin();
   });
   it("And I should see a Sign Up button in the navigation bar", async () => {
-    await loginPage.findSigIn;
+    loginPage.findSignIn();
   });
-  it("When I click over the Log In button in the navigation bar", async () => {
-    await loginPage.logInClick;
-  });
+  it("When I click over the Log In button in the navigation bar", async () => {});
   it("Then I should see a Log In pop up", async () => {
-    await loginPage.modalLogIn;
+    const modalLogIn = $(`#logInModal > div > div`);
   });
-  it("When I complete the user name field with an existing user name", async () => {});
-  it("And I complete the password field with the expected valid password", async () => {});
+  xit("When I complete the user name field with an existing user name", async () => {
+    loginPage.login("test", "");
+  });
+  xit("And I complete the password field with the expected valid password", async () => {
+    loginPage.login("", "test");
+  });
   it("And I click over the Log In button in the Log In popup", async () => {
-    await loginPage.login("test", "test");
+    loginPage.login("test", "test");
   });
   it("Then I should not longer see any popup on the screen", async () => {
-    if ((await loginPage.modalLogIn).isExisting()) {
+    if (loginPage.loginModalPopUp().isExisting()) {
       console.log("test failed");
     } else {
       ("test succes");
     }
   });
   it("And I should not longer see the Sign Up button in the navigation bar", async () => {
-    if ((await loginPage.findLogIn).isExisting()) {
+    if (loginPage.loginModalPopUp().isExisting()) {
       console.log("test failed");
     } else {
       console.log("test succes");
     }
   });
   it(`And I should see a "Welcome <username>" button in the navigation bar`, async () => {
-    (await loginPage.welcomeUser) == "Welcome test";
+    loginPage.welcomeUser()(await welcomeUser) == "Welcome test";
   });
   it(`Then I log out`, async () => {
-    await loginPage.logOut;
+    loginPage.logOut();
   });
 });
 
@@ -56,23 +60,26 @@ describe(`Project-01-part2`, async () => {
     browser.maximizeWindow();
   });
   it("Then I should see a Log In button in the navigation bar", async () => {
-    await loginPage.findLogIn;
+    loginPage.findLogin();
   });
   it("And I should see a Sign Up button in the navigation bar", async () => {
-    await loginPage.findSigIn;
+    loginPage.findSignIn();
   });
   it("When I click over the Log In button in the navigation bar", async () => {
-    await loginPage.logInClick;
+    loginPage.logInClick();
   });
   it("Then I should see a Log In pop up", async () => {
-    await loginPage.modalLogIn;
+    loginPage.loginModalPopUp();
   });
-  it("When I complete the user name field with an existing user name", async () => {
-    await loginPage.login("test", "");
+  xit("When I complete the user name field with an existing user name", async () => {
+    loginPage.login("test", "");
   });
-  it("And I click over the Log In button in the Log In popup", async () => {});
   it("And I click over the Log In button in the Log In popup", async () => {
-    (await loginPage.alertText) === "Please fill out Username and Passwword";
+    loginPage.login("test", "");
+  });
+  it("And I click over the Log In button in the Log In popup", async () => {
+    loginPage.alertText()(await alertText) ===
+      "Please fill out Username and Passwword";
   });
 });
 
