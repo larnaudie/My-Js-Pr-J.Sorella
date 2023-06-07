@@ -1,12 +1,14 @@
 const loginPage = require("../pageobjects/loginpage");
+//import LoginPage from "../pageobjects/loginpage.js";
 
-describe(`Project-01-part1`, async () => {
+describe("Project-01-part1", async () => {
   it("When I access to the Demo Blaze home page", async () => {
     await browser.url("https://www.demoblaze.com/");
     expect(await browser.getTitle()).toEqual("STORE");
   });
+
   it("Maximize window", async () => {
-    browser.maximizeWindow();
+    await browser.maximizeWindow();
   });
   it("Then I should see a Log In button in the navigation bar", async () => {
     await loginPage.findLogIn;
@@ -20,10 +22,14 @@ describe(`Project-01-part1`, async () => {
   it("Then I should see a Log In pop up", async () => {
     await loginPage.modalLogIn;
   });
-  it("When I complete the user name field with an existing user name", async () => {});
-  it("And I complete the password field with the expected valid password", async () => {});
-  it("And I click over the Log In button in the Log In popup", async () => {
+  it("When I complete the user name field with an existing user name", async () => {
     await loginPage.login("test", "test");
+  });
+  it("And I complete the password field with the expected valid password", async () => {
+    await expect(loginPage.inputUsername.toHaveTextContaining("test"));
+  });
+  it("And I click over the Log In button in the Log In popup", async () => {
+    await expect(loginPage.inputPassword.toHaveTextContaining("test"));
   });
   it("Then I should not longer see any popup on the screen", async () => {
     if ((await loginPage.modalLogIn).isExisting()) {
@@ -40,7 +46,11 @@ describe(`Project-01-part1`, async () => {
     }
   });
   it(`And I should see a "Welcome <username>" button in the navigation bar`, async () => {
-    (await loginPage.welcomeUser) == "Welcome test";
+    await expect(
+      loginPage.welcomeUser.toHaveTextContaining(
+        `welcome ${await loginPage.inputUsername}`
+      )
+    );
   });
   it(`Then I log out`, async () => {
     await loginPage.logOut;
@@ -53,7 +63,7 @@ describe(`Project-01-part2`, async () => {
     expect(await browser.getTitle()).toEqual("STORE");
   });
   it("Maximize window", async () => {
-    browser.maximizeWindow();
+    await browser.maximizeWindow();
   });
   it("Then I should see a Log In button in the navigation bar", async () => {
     await loginPage.findLogIn;
@@ -70,7 +80,9 @@ describe(`Project-01-part2`, async () => {
   it("When I complete the user name field with an existing user name", async () => {
     await loginPage.login("test", "");
   });
-  it("And I click over the Log In button in the Log In popup", async () => {});
+  it("And I click over the Log In button in the Log In popup", async () => {
+    await expect(loginPage.inputPassword.toHaveTextContaining("test"));
+  });
   it("And I click over the Log In button in the Log In popup", async () => {
     (await loginPage.alertText) === "Please fill out Username and Passwword";
   });

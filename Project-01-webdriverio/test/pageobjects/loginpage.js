@@ -1,18 +1,16 @@
-const Page = require("./page");
-
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class LoginPage extends Page {
+class LoginPage {
   /**
    * define selectors using getter methods
    */
   get inputUsername() {
-    return $("#username");
+    return $("#loginusername");
   }
 
   get inputPassword() {
-    return $("#password");
+    return $("#loginpassword");
   }
 
   get btnSubmit() {
@@ -32,7 +30,7 @@ class LoginPage extends Page {
   }
 
   get modalLogIn() {
-    return $(`#logInModal > div > div`);
+    return $(`//*[@id="logInModal"]/div/div`);
   }
 
   get welcomeUser() {
@@ -40,7 +38,7 @@ class LoginPage extends Page {
   }
 
   get logOut() {
-    return $(`//*[@id="logout2"]`).click();
+    return $(`#logout2`).click();
   }
 
   get alertText() {
@@ -51,15 +49,15 @@ class LoginPage extends Page {
    * e.g. to login using username and password
    */
   async login(username, password) {
-    await this.inputUsername.setValue(username);
-    await this.inputPassword.setValue(password);
+    await this.inputUsername.setValue("test");
+    await this.inputPassword.setValue("test");
     await this.btnSubmit.click();
   }
 
   /**
    * overwrite specific options to adapt it to page object
    */
-  open() {
+  get open() {
     return super.open("login");
   }
 }
