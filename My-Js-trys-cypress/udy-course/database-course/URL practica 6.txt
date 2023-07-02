@@ -1,1 +1,0 @@
-http://216.10.242.178:8082/axis2/services/EmployeeManagementService?wsdl
