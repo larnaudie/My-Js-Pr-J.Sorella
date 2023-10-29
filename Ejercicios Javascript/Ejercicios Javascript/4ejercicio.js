@@ -1,4 +1,4 @@
-"strict";
+"use strict";
 /*4) Escribir un programa que solicite al usuario el ingreso
  de una temperatura en escala Fahrenheit (debe permitir decimales)
   y le muestre el equivalente en grados Celsius. La fórmula de conversión
@@ -12,20 +12,16 @@ Ejemplo de ejecución:
 */
 
 //Ejemplo extraido de internet
+const prompt = require("prompt-sync")();
 const numb = 21242143.4533423131231;
 const rounded = Math.round((numb + Number.EPSILON) * 100) / 100;
 console.log(rounded);
 
-const temp = Number(prompt("put Farenheit temperature"));
+const temp = Number(prompt("put Farenheit temperature: "));
 
 const convertoToCelsius = function () {
   let convert = (5 / 9) * (temp - 32);
   return Math.round((convert + Number.EPSILON) * 100) / 100;
 };
 
-const celsiusTemp = function () {
-  const celsius = convertoToCelsius();
-  return celsius;
-};
-
-console.log(celsiusTemp(temp));
+convertoToCelsius(temp);

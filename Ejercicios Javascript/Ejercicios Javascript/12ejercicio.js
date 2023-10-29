@@ -1,8 +1,8 @@
+"use strict"
 /*12) Escribir una función que tome un carácter y devuelva True si es una vocal,
  de lo contrario devuelve False.*/
-
-const value = prompt("Ingrese un valor");
-console.log(value);
+const prompt = require("prompt-sync")();
+const value = prompt("type any value");
 
 const whomIAm = function (value) {
   if (
@@ -12,10 +12,10 @@ const whomIAm = function (value) {
     value === "o" ||
     value === "u"
   ) {
-    console.log(true);
+    return true;
   } else {
-    console.log(false);
+    return false;
   }
 };
 
-console.log(whomIAm(value));
+whomIAm(value)

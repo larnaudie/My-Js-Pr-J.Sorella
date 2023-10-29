@@ -1,17 +1,17 @@
-"strict";
+"use strict";
 /*2) Escribir un programa que pregunte
  al usuario por un número de horas trabajadas y un coste por hora. 
 Después debe mostrar por pantalla los honorarios que le corresponde.
 */
 
-const alertHoras = prompt("¿cuantas horas trabajadas tenes?");
-const alertPago = prompt("¿cuanto cobras?");
+const workedHours = prompt("¿how many hours worked do you have?");
+const yourSalary = prompt("¿what is your salary?");
 
-const horas = alertHoras;
-const pago = alertPago;
+const hours = workedHours;
+const salary = yourSalary;
 
-const miTrabajo = function (horas, costo) {
-  return `si trabajaste ${horas}hs entonces te cobrare ${horas * pago}`;
+const myFinalPayment = function (hours) {
+  return `if you worked ${hours}hs then I will give you ${hours * salary}`;
 };
 
-console.log(miTrabajo(horas, pago));
+myFinalPayment(hours, salary)

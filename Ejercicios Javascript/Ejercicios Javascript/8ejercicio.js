@@ -1,3 +1,4 @@
+"use strict"
 /*8) Una juguetería tiene mucho éxito en dos de sus productos: 
 payasos y muñecas. Suele hacer venta por correo y la empresa 
 de logística les cobra por peso de cada paquete así que deben 
@@ -7,44 +8,35 @@ Escribir un programa que lea el número de payasos y muñecas vendidos
  en el último pedido y calcule el peso total del paquete que será enviado
 */
 
-//probando si trnasforma a numero el number
-const numerito = Number(prompt("esto sera un numerito de valor 1"));
+const prompt = require("prompt-sync")();
+const number = Number(prompt("this will be a number of value 1"));
 
-if (numerito === 1) {
-  console.log("es un numerito");
+if (number === 1) {
+  console.log("this is a number");
 } else {
-  console.log("es un string, no un numero");
+  console.log("this is a string not a number");
 }
-console.log(numerito);
+number
 
-//ingresando peso
 const heighClowns = 112;
 const heighBarbies = 75;
 
-//ingresando cantidad
-const countClowns = Number(prompt("how many clowns had been sold?"));
-const countBarbies = Number(prompt("how many barbies had been sold?"));
-console.log(countBarbies, countClowns);
+const countClowns = Number(prompt("how many clowns had been sold?: "));
+const countBarbies = Number(prompt("how many barbies had been sold?: "));
+countBarbies, countClowns
 
-//calculando peso por cantidad
-
-//calulando peso y catidad en payasos
 const finalClowns = function (heighClowns, countClowns) {
   const clownsFianlHeigh = countClowns * heighClowns;
   return clownsFianlHeigh;
 };
-//verificando
-console.log(finalClowns(heighClowns, countClowns));
 
-//calulando peso y catidad en muñecas
+finalClowns(heighClowns, countClowns)
+
 const finalBarbies = function (heighClowns, countClowns) {
   const barbiesFinalHeigh = countBarbies * heighBarbies;
   return barbiesFinalHeigh;
 };
-//verificando
-console.log(finalBarbies(heighClowns, countClowns));
 
-//sumando todo el envio en total
-console.log(
-  finalClowns(heighClowns, countClowns) + finalBarbies(heighClowns, countClowns)
-);
+finalBarbies(heighClowns, countClowns)
+
+finalClowns(heighClowns, countClowns) + finalBarbies(heighClowns, countClowns);
