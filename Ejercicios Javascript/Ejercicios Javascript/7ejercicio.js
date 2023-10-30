@@ -17,19 +17,22 @@ menor a la cantidad de caracteres que tiene el texto que ingresó
     tendrá que ser un número entre 0 y 4) y almacenar 
     este número en una variable llamada indice.
 */
-const index = function (value) {
-	prompt("Put a possitive value minor than the lenght of the last word: ");
-	if(0 > index < putText.length){
-	return "Great!";}
+
+const validValue = prompt(`Your max lenght word it's ${putText.length}, 
+Now put a possitive value minor than the lenght of your word: ` );
+const index = function (validValue) {
+	if(0 > validValue < putText.length){
+	const savedValue = validValue;
+	return prompt(`Great! your saved valid value was ${validValue}`)}
 	else{
-		return `Your number must to be higher than 0 but higher than ${putText}`;
+		return prompt(`Your number must to be higher than 0 but higher than ${putText}`);
 	}
 }
+
 /*
 Mostrar en pantalla el carácter del texto ubicado en la posición dada por indice. 
 */
- const anyLetter = putText.charAt(index);
-
+index(validValue)
 /*
 Ejemplo de ejecución:
 
